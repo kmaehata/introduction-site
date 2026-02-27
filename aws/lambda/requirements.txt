@@ -1,0 +1,3 @@
+# boto3 は Lambda ランタイムに含まれるため不要
+# numpy のみ追加 (Linux x86_64 ビルドは CI/CD で --platform 指定)
+numpy==1.26.4

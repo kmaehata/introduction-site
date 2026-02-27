@@ -1,0 +1,64 @@
+.page {
+  padding: 48px 48px 80px;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+}
+
+.pageHeader {
+  margin-bottom: 52px;
+}
+
+.title {
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.96);
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 0 0 32px rgba(100, 180, 255, 0.25);
+}
+
+.subtitle {
+  font-size: 0.60rem;
+  letter-spacing: 0.35em;
+  color: rgba(160, 210, 255, 0.55);
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.wipCard {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 12, 42, 0.65);
+  border: 1px solid rgba(120, 185, 255, 0.16);
+  border-radius: 20px;
+  min-height: 320px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.wipInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.wipLabel {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  letter-spacing: 0.28em;
+  color: rgba(160, 210, 255, 0.50);
+  text-transform: uppercase;
+}
+
+.wipText {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: rgba(160, 210, 255, 0.35);
+  font-weight: 300;
+}

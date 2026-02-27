@@ -1,0 +1,51 @@
+.nav {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 32px;
+  gap: 28px;
+  z-index: 100;
+  /* ガラス背景 */
+  background: rgba(4, 14, 50, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-left: 1px solid rgba(120, 185, 255, 0.14);
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  opacity: 0.38;
+  transition: opacity 0.3s ease;
+  text-align: right;
+}
+
+.link:hover {
+  opacity: 0.75;
+}
+
+.link.active {
+  opacity: 1;
+}
+
+.label {
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.96);
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(100, 180, 255, 0.40);
+}
+
+.sub {
+  font-size: 0.70rem;
+  letter-spacing: 0.10em;
+  color: rgba(160, 210, 255, 0.75);
+}
