@@ -6,9 +6,6 @@ import styles from './page.module.css'
 type CharacterState = 'stand' | 'thinking' | 'talking'
 type Phase = 'intro' | 'question' | 'answer'
 
-const MOCK_RESPONSE =
-  `ご質問ありがとうございます。\n\nAWS・GCP・Azure のマルチクラウドと生成AI開発を専門とするエンジニアです。\n\n深層学習モデルの研究開発から LLM を活用したプロダクト開発、エンタープライズ向けクラウドインフラの構築まで、プロジェクト全体を一気通貫でサポートできます。\n\n経歴・スキル・実績について、何でもお気軽にお聞きください。`
-
 const sleep = (ms: number) => new Promise<void>(r => setTimeout(r, ms))
 
 export default function TopPage() {
@@ -49,8 +46,8 @@ export default function TopPage() {
     // 3. 待機
     await sleep(1500)
 
-    // 4. AI API を呼び出す（API URL が未設定の場合はモック）
-    let aiResponse = MOCK_RESPONSE
+    // 4. Lambda RAG API を呼び出す
+    let aiResponse = ''
     const apiUrl = process.env.NEXT_PUBLIC_AI_API_URL
     if (apiUrl) {
       try {
@@ -61,24 +58,28 @@ export default function TopPage() {
         })
         if (res.ok) {
           const data = await res.json()
-          aiResponse = data.response ?? MOCK_RESPONSE
+          aiResponse = data.response ?? ''
+        } else {
+          aiResponse = 'エラーが発生しました。しばらく後でお試しください。'
         }
       } catch (err) {
-        console.error('AI API call failed, using mock:', err)
+        console.error('AI API call failed:', err)
+        aiResponse = 'エラーが発生しました。しばらく後でお試しください。'
       }
+    } else {
+      aiResponse = 'API が設定されていません。'
     }
 
-    // 5. ストリーミング開始 / キャラ: talking
+    // 5. ストリーミング表示 / キャラ: talking
     setCharacter('talking')
     setPhase('answer')
 
-    const text = aiResponse
     let i = 0
     if (intervalRef.current) clearInterval(intervalRef.current)
     intervalRef.current = setInterval(() => {
       i++
-      setResponseText(text.slice(0, i))
-      if (i >= text.length) {
+      setResponseText(aiResponse.slice(0, i))
+      if (i >= aiResponse.length) {
         clearInterval(intervalRef.current!)
         intervalRef.current = null
         setCharacter('stand')
