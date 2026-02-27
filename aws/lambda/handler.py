@@ -109,30 +109,25 @@ def generate(query: str, context_chunks: list[str]) -> str:
     return result["content"][0]["text"]
 
 
-# ── CORS headers ──────────────────────────────────────────────────────────────
-CORS = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Content-Type": "application/json",
-}
+# ── Helpers ───────────────────────────────────────────────────────────────────
+HEADERS = {"Content-Type": "application/json"}
 
 
 def ok(body: dict) -> dict:
-    return {"statusCode": 200, "headers": CORS, "body": json.dumps(body, ensure_ascii=False)}
+    return {"statusCode": 200, "headers": HEADERS, "body": json.dumps(body, ensure_ascii=False)}
 
 
 def err(code: int, msg: str) -> dict:
-    return {"statusCode": code, "headers": CORS, "body": json.dumps({"error": msg}, ensure_ascii=False)}
+    return {"statusCode": code, "headers": HEADERS, "body": json.dumps({"error": msg}, ensure_ascii=False)}
 
 
 # ── Handler ───────────────────────────────────────────────────────────────────
 def lambda_handler(event, context):
     method = event.get("requestContext", {}).get("http", {}).get("method", "POST")
 
-    # CORS preflight
+    # CORS preflight は Function URL 側で処理
     if method == "OPTIONS":
-        return {"statusCode": 200, "headers": CORS, "body": ""}
+        return {"statusCode": 200, "headers": HEADERS, "body": ""}
 
     if method != "POST":
         return err(405, "Method Not Allowed")
