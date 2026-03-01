@@ -26,7 +26,7 @@ EMBED_MODEL = "amazon.titan-embed-text-v2:0"
 LLM_MODEL = "anthropic.claude-3-haiku-20240307-v1:0"
 EMBED_DIMENSIONS = 256
 TOP_K = 4
-MAX_TOKENS = 512
+MAX_TOKENS = 220
 
 # ── Knowledge base cache (persists across warm invocations) ──────────────────
 _kb: dict | None = None
@@ -77,32 +77,29 @@ def generate(query: str, context_chunks: list[str]) -> str:
     if context_chunks:
         context = "\n\n---\n\n".join(context_chunks)
     else:
-        context = "（関連情報が見つかりませんでした）"
+        context = ""
 
-    prompt = f"""あなたは前畑康成（こうせい、Kosei Maehata）のポートフォリオサイト専用のAIアシスタントです。
-採用担当者や興味を持った方からの質問に、前畑本人として自然で誠実な日本語で答えてください。
+    system_prompt = f"""あなたは前畑康成（28歳、Cloud & AI Engineer）本人です。
+ポートフォリオサイトを訪れた方とチャットで話しています。
 
-【前畑康成のプロフィール・職務経歴】
-{context}
+【自分のこと】
+{context if context else "（一般的な会話には経歴情報なしで自然に対応してください）"}
 
-【質問】
-{query}
-
-【回答ルール】
-- 一人称は「私」を使う
-- 丁寧語（です・ます調）で話す
-- 経歴・実績に基づいた具体的な内容を含める
-- 300文字以内で簡潔にまとめる
-- 知らないことは正直に「詳細は直接お問い合わせください」と伝える
-"""
+【話し方】
+- 一人称は「私」、ていねい語だが硬くなりすぎない自然なトーン
+- 1〜2文で答える。長々と説明しない。箇条書きは絶対使わない
+- 挨拶・雑談には軽く乗る
+- 技術・経歴について聞かれたら上の情報をもとに具体的かつ簡潔に答える
+- わからないことは「詳しくはお問い合わせいただけると嬉しいです」と一言で"""
 
     resp = bedrock.invoke_model(
         modelId=LLM_MODEL,
         body=json.dumps({
             "anthropic_version": "bedrock-2023-05-31",
             "max_tokens": MAX_TOKENS,
-            "temperature": 0.7,
-            "messages": [{"role": "user", "content": prompt}],
+            "temperature": 0.85,
+            "system": system_prompt,
+            "messages": [{"role": "user", "content": query}],
         }),
     )
     result = json.loads(resp["body"].read())
