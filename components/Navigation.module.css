@@ -49,3 +49,96 @@
   letter-spacing: 0.10em;
   color: rgba(160, 210, 255, 0.75);
 }
+
+/* ── ハンバーガーボタン（デフォルト: デスクトップで非表示） ── */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 101;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: rgba(4, 12, 42, 0.72);
+  border: 1px solid rgba(120, 185, 255, 0.22);
+  border-radius: 8px;
+  padding: 10px 11px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* ── 背景オーバーレイ ── */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(4, 12, 42, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* ── モバイル (max-width: 767px) ── */
+@media (max-width: 767px) {
+  .nav {
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+  }
+
+  .navOpen {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .overlay {
+    display: block;
+  }
+}
+
+/* ── デスクトップ明示（min-width: 768px） ── */
+@media (min-width: 768px) {
+  .hamburger {
+    display: none !important;
+  }
+
+  .overlay {
+    display: none !important;
+  }
+
+  .nav {
+    transform: none !important;
+  }
+}
+
+/* ── モバイル: リンク可読性改善 ── */
+@media (max-width: 767px) {
+  .nav {
+    gap: 4px;
+    padding: 80px 28px 40px;
+  }
+
+  .link {
+    min-height: 44px;
+    padding: 12px 0;
+    gap: 6px;
+    opacity: 0.85;
+  }
+
+  .sub {
+    font-size: var(--font-size-label);
+    letter-spacing: 0.12em;
+  }
+}
