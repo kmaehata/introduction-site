@@ -129,19 +129,24 @@ export default function TopPage() {
                 </div>
               ) : (
                 <div className={styles.chatView}>
-                  <p className={styles.msgRole}>YOU</p>
-                  <p className={styles.userQuery}>{userQuery}</p>
+                  <div className={`${styles.msgBubble} ${styles.msgBubbleUser}`}>
+                    <span className={styles.msgSender}>あなた</span>
+                    <p className={styles.userQuery}>{userQuery}</p>
+                  </div>
                   <div className={styles.chatDivider} />
-                  {phase === 'question' ? (
-                    <div className={styles.thinkingDots}>
-                      <span /><span /><span />
-                    </div>
-                  ) : (
-                    <p className={styles.responseText}>
-                      {responseText}
-                      {isBusy && <span className={styles.cursor} />}
-                    </p>
-                  )}
+                  <div className={`${styles.msgBubble} ${styles.msgBubbleAi}`}>
+                    <span className={styles.msgSender}>AI</span>
+                    {phase === 'question' ? (
+                      <div className={styles.thinkingDots}>
+                        <span /><span /><span />
+                      </div>
+                    ) : (
+                      <p className={styles.responseText}>
+                        {responseText}
+                        {isBusy && <span className={styles.cursor} />}
+                      </p>
+                    )}
+                  </div>
                 </div>
               )}
             </div>

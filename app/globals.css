@@ -17,6 +17,10 @@
   --node-ring: rgba(160, 215, 255, 0.72);
   --serif: var(--font-serif, 'Georgia', serif);
   --sans: var(--font-sans, -apple-system, 'Helvetica Neue', sans-serif);
+  --text-label: rgba(180, 218, 255, 0.75);
+  --text-query: rgba(210, 232, 255, 0.82);
+  --font-size-label: 0.75rem;
+  --line-height-body: 1.6;
 }
 
 html,

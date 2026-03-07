@@ -18,9 +18,9 @@
 }
 
 .subtitle {
-  font-size: 0.60rem;
+  font-size: var(--font-size-label);
   letter-spacing: 0.35em;
-  color: rgba(160, 210, 255, 0.55);
+  color: var(--text-label);
   text-transform: uppercase;
   margin-top: 10px;
 }
@@ -106,9 +106,9 @@
 }
 
 .experience {
-  font-size: 0.58rem;
+  font-size: var(--font-size-label);
   letter-spacing: 0.18em;
-  color: rgba(160, 210, 255, 0.65);
+  color: var(--text-label);
   text-transform: uppercase;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .tag {
-  font-size: 0.70rem;
+  font-size: var(--font-size-label);
   letter-spacing: 0.04em;
   color: rgba(210, 230, 255, 0.82);
   background: rgba(120, 185, 255, 0.07);
@@ -172,4 +172,19 @@
 .azure .tag:hover {
   background: rgba(0, 150, 230, 0.14);
   border-color: rgba(0, 150, 230, 0.36);
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 24px 16px 60px;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .rowNarrow {
+    grid-template-columns: 1fr;
+  }
+  .card {
+    padding: 20px 18px;
+  }
 }
