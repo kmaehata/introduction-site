@@ -37,3 +37,13 @@
   padding-right: 180px;
   min-height: 100vh;
 }
+
+@media (max-width: 767px) {
+  .header {
+    padding-right: 0;
+  }
+
+  .main {
+    padding-right: 0;
+  }
+}

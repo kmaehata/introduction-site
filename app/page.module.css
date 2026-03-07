@@ -24,7 +24,8 @@
 /* Top section: character + info */
 .cardBody {
   display: flex;
-  height: 460px;
+  min-height: 460px;
+  height: auto;
 }
 
 /* Character section */
@@ -88,12 +89,14 @@
 /* ── フェードするボディ ── */
 .infoPanelBody {
   flex: 1;
-  overflow: hidden;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.28s ease, transform 0.28s ease;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 185, 255, 0.15) transparent;
 }
 
 .infoPanelBody.fadeOut {
