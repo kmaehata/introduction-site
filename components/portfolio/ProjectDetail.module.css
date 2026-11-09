@@ -97,6 +97,42 @@
   color: var(--text-label);
 }
 
+/* 外部リンク(Webアプリなど) */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.linkBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 20px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(124, 156, 255, 0.2), rgba(167, 139, 250, 0.16));
+  border: 1px solid rgba(165, 180, 252, 0.35);
+  box-shadow: var(--glass-highlight);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.linkBtn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(199, 210, 254, 0.6);
+}
+
+.linkLabel {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.linkNote {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
 /* ── 版 ── */
 .versions {
   display: flex;

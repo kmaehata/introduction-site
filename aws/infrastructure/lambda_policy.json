@@ -4,16 +4,37 @@
     {
       "Sid": "ReadKnowledgeBase",
       "Effect": "Allow",
-      "Action": ["s3:GetObject"],
+      "Action": [
+        "s3:GetObject"
+      ],
       "Resource": "arn:aws:s3:::YOUR_KB_BUCKET_NAME/*"
+    },
+    {
+      "Sid": "MonthlyUsage",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::YOUR_KB_BUCKET_NAME/usage/*"
+    },
+    {
+      "Sid": "ListForMissingUsage",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": "arn:aws:s3:::YOUR_KB_BUCKET_NAME"
     },
     {
       "Sid": "InvokeBedrock",
       "Effect": "Allow",
-      "Action": ["bedrock:InvokeModel"],
+      "Action": [
+        "bedrock:InvokeModel"
+      ],
       "Resource": [
         "arn:aws:bedrock:*::foundation-model/amazon.titan-embed-text-v2:0",
-        "arn:aws:bedrock:*::foundation-model/anthropic.claude-3-haiku-20240307-v1:0"
+        "arn:aws:bedrock:*::foundation-model/anthropic.claude-*",
+        "arn:aws:bedrock:*:YOUR_ACCOUNT_ID:inference-profile/*"
       ]
     },
     {

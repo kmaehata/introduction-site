@@ -34,6 +34,7 @@ export type Project = {
   tags: string[]
   stack: string[]
   repoNote: string
+  links?: { label: string; href: string; note?: string }[]
   versions: Version[]
 }
 
@@ -57,6 +58,13 @@ export const projects: Project[] = [
     tags: ['マルチエージェント', '生成AI', '自動売買', 'AWS'],
     stack: ['Python', 'SQLite', 'Claude Code', 'Amazon Bedrock', 'AWS Lambda', 'Amazon S3', 'CloudFront', 'Cognito', 'DynamoDB', 'GitHub Actions'],
     repoNote: 'ソースコードは非公開です。設計の考え方や実装は、面談で画面を共有しながらご説明できます。',
+    links: [
+      {
+        label: 'Webアプリを開く',
+        href: 'https://d16oi8osid5n77.cloudfront.net/',
+        note: '成績や AI の判断を見る画面です(ログインが必要です)',
+      },
+    ],
     versions: [
       {
         version: '1.0',
