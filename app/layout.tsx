@@ -1,15 +1,7 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import styles from './layout.module.css'
 import './globals.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  weight: ['300', '400', '500', '600'],
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: 'KM',
@@ -26,13 +18,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja" className={inter.variable}>
+    <html lang="ja">
       <head>
-        {/* 見出しの書体。ビルド時の取得が不安定なため、next/font を使わずに直接読み込む */}
+        {/* 書体(見出し: Space Grotesk、本文: Inter)。
+            next/font はビルド時の取得が CI で不安定に失敗するため、使わずに直接読み込む */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" />
       </head>
       <body>
         {/* 背景のオーロラ */}
