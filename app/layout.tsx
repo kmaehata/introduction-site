@@ -1,19 +1,20 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Space_Grotesk, Inter } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import styles from './layout.module.css'
 import './globals.css'
 
-const playfair = Playfair_Display({
+const display = Space_Grotesk({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-display',
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
-  weight: ['300', '400'],
+  weight: ['300', '400', '500', '600'],
   display: 'swap',
 })
 
@@ -24,14 +25,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="ja" className={`${display.variable} ${inter.variable}`}>
       <body>
-        <header className={styles.header}>
-          <div className={styles.logo}>KM</div>
-          <div className={styles.subtext}>CLOUD &amp; AI ENGINEER</div>
-        </header>
+        {/* 背景のオーロラ */}
+        <div className="aurora" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
         <Navigation />
         <main className={styles.main}>{children}</main>
+        <footer className={styles.footer}>
+          <span>© KM</span>
+          <span>Cloud &amp; AI Engineer</span>
+        </footer>
       </body>
     </html>
   )

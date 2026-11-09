@@ -1,31 +1,39 @@
 .page {
-  padding: 48px 48px 80px;
-  min-height: calc(100vh - 80px);
+  padding: 24px 0 64px;
   display: flex;
   flex-direction: column;
 }
 
 .pageHeader {
-  margin-bottom: 52px;
+  margin-bottom: 48px;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  margin-bottom: 12px;
 }
 
 .title {
-  font-family: var(--serif);
-  font-size: 2.6rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.96);
-  text-transform: uppercase;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
   line-height: 1;
-  text-shadow: 0 0 32px rgba(100, 180, 255, 0.25);
+  background: linear-gradient(120deg, #ffffff 0%, #c7d2fe 60%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .subtitle {
-  font-size: var(--font-size-label);
-  letter-spacing: 0.35em;
-  color: var(--text-label);
-  text-transform: uppercase;
-  margin-top: 10px;
+  margin-top: 14px;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
 }
 
 .grid {
@@ -37,13 +45,13 @@
 .card {
   display: flex;
   flex-direction: column;
-  background: rgba(4, 12, 42, 0.74);
-  border: 1px solid rgba(120, 185, 255, 0.18);
-  border-radius: 18px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 32px rgba(4, 12, 42, 0.4);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
   transition: border-color 0.3s, transform 0.3s;
 }
 
@@ -80,7 +88,7 @@
   padding: 5px 12px;
   border-radius: 999px;
   color: #04102e;
-  background: rgba(160, 215, 255, 0.92);
+  background: rgba(199, 210, 254, 0.95);
   font-weight: 400;
 }
 
@@ -119,7 +127,7 @@
   font-size: 0.7rem;
   padding: 3px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(120, 185, 255, 0.28);
+  border: 1px solid var(--glass-border);
   color: var(--text-label);
 }
 
@@ -163,7 +171,7 @@
   min-height: 260px;
   border: 1px dashed rgba(120, 185, 255, 0.22);
   border-radius: 18px;
-  background: rgba(4, 12, 42, 0.45);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .soonLabel {
@@ -177,12 +185,4 @@
   color: rgba(160, 210, 255, 0.45);
 }
 
-@media (max-width: 767px) {
-  .page {
-    padding: 32px 16px 64px;
-  }
 
-  .title {
-    font-size: 2rem;
-  }
-}

@@ -47,5 +47,5 @@ const entries: TimelineEntry[] = [
 ]
 
 export default function EducationPage() {
-  return <TimelinePage title="EDUCATION" subtitle="2004 – 2020" entries={entries} />
+  return <TimelinePage title="Education" subtitle="2004 – 2020" entries={entries} />
 }

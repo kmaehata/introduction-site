@@ -41,5 +41,5 @@ const entries: TimelineEntry[] = [
 ]
 
 export default function BackgroundPage() {
-  return <TimelinePage title="BACKGROUND" subtitle="2020 – NOW" entries={entries} />
+  return <TimelinePage title="Background" subtitle="2020 – NOW" entries={entries} />
 }

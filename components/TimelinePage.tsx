@@ -17,6 +17,7 @@ export default function TimelinePage({ title, subtitle, entries }: Props) {
   return (
     <div className={styles.page}>
       <div className={styles.pageHeader}>
+        <p className={styles.eyebrow}>Timeline</p>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.subtitle}>{subtitle}</p>
       </div>

@@ -1,155 +1,153 @@
 .page {
-  padding: 48px 48px 80px;
-  /* max-width を外して横幅を広く使う */
+  padding: 24px 0 64px;
 }
 
 .pageHeader {
-  margin-bottom: 64px;
+  margin-bottom: 56px;
+  animation: rise 0.6s ease-out both;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-label);
+  margin-bottom: 12px;
 }
 
 .title {
-  font-family: var(--serif);
-  font-size: 2.6rem;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.96);
-  text-transform: uppercase;
+  font-family: var(--display);
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
   line-height: 1;
-  text-shadow: 0 0 32px rgba(100, 180, 255, 0.25);
+  background: linear-gradient(120deg, #ffffff 0%, #c7d2fe 60%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .subtitle {
-  font-size: var(--font-size-label);
-  letter-spacing: 0.35em;
-  color: var(--text-label);
-  text-transform: uppercase;
-  margin-top: 10px;
+  margin-top: 14px;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
 }
 
-/* Timeline container */
+/* 年表 */
 .timeline {
   position: relative;
-  padding-left: 110px;
+  padding-left: 132px;
 }
 
-/* Vertical line */
+/* 縦の線(光るグラデーション) */
 .timeline::before {
   content: '';
   position: absolute;
-  left: 20px;
-  top: 14px;
-  bottom: 24px;
-  width: 1px;
-  background: linear-gradient(
-    to bottom,
-    rgba(140, 200, 255, 0) 0%,
-    rgba(140, 200, 255, 0.38) 8%,
-    rgba(140, 200, 255, 0.38) 92%,
-    rgba(140, 200, 255, 0) 100%
-  );
+  left: 104px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  border-radius: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(157, 180, 255, 0.6) 6%, rgba(167, 139, 250, 0.5) 50%, rgba(125, 211, 252, 0.45) 94%, transparent);
+  box-shadow: 0 0 12px rgba(140, 160, 255, 0.35);
 }
 
-/* Each entry */
 .entry {
   position: relative;
-  margin-bottom: 60px;
+  margin-bottom: 32px;
+  animation: rise 0.6s ease-out both;
 }
 
 .entry:last-child {
   margin-bottom: 0;
 }
 
-/* Year label + node */
 .yearBlock {
   position: absolute;
-  left: -110px;
-  top: 0;
-  width: 96px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  left: -132px;
+  top: 18px;
+  width: 84px;
+  text-align: right;
 }
 
 .year {
-  font-family: var(--serif);
-  font-size: 1.4rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: rgba(160, 215, 255, 0.85);
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   line-height: 1;
-  text-shadow: 0 0 16px rgba(100, 180, 255, 0.40);
+  color: var(--text-primary);
 }
 
-/* Node circle on the vertical line */
+/* 線の上の点 */
 .node {
   position: absolute;
-  left: calc(100% + 14px);
-  top: 6px;
-  width: 11px;
-  height: 11px;
+  left: calc(100% + 13px);
+  top: 4px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  border: 1.5px solid rgba(160, 215, 255, 0.72);
   background: var(--bg);
-  z-index: 1;
-  box-shadow: 0 0 8px rgba(100, 180, 255, 0.35);
+  border: 2px solid #a5b4fc;
+  box-shadow: 0 0 0 4px rgba(124, 156, 255, 0.15), 0 0 16px rgba(140, 160, 255, 0.7);
 }
 
-/* Glass card */
+/* すりガラスのカード */
 .card {
-  background: rgba(4, 12, 42, 0.72);
-  border: 1px solid rgba(120, 185, 255, 0.18);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 32px rgba(4, 12, 42, 0.40);
-  transition: border-color 0.3s;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
 }
 
 .card:hover {
-  border-color: rgba(120, 185, 255, 0.32);
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
 }
 
 .cardInner {
   display: flex;
-  gap: 0;
 }
 
-/* Image section */
 .imageSection {
-  width: 220px;
+  position: relative;
+  width: 240px;
   flex-shrink: 0;
-  border-right: 1px solid rgba(120, 185, 255, 0.10);
-  overflow: hidden;
+  padding: 12px 0 12px 12px;
 }
 
 .cardImage {
   width: 100%;
   height: 100%;
+  min-height: 180px;
+  display: block;
   object-fit: cover;
   object-position: center top;
-  display: block;
-  min-height: 180px;
-  filter: brightness(0.88) saturate(0.80);
+  border-radius: 16px;
+  filter: saturate(0.85) brightness(0.92);
 }
 
-/* Portrait image */
 .imageSection.portrait {
-  width: 180px;
+  width: 190px;
 }
 
 .imageSection.portrait .cardImage {
   object-position: center;
 }
 
-/* Text section */
 .textSection {
   flex: 1;
-  padding: 28px 36px;
   min-width: 0;
+  padding: 28px 36px;
 }
 
-/* Full width (no image) */
 .textSectionFull {
   padding: 28px 36px;
 }
@@ -157,35 +155,63 @@
 .paragraphs {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .paragraph {
-  font-size: 1rem;
-  line-height: 2.0; /* WCAG compliant: exceeds --line-height-body (1.6) minimum */
-  color: rgba(220, 235, 255, 0.88);
-  font-weight: 300;
+  font-size: 0.97rem;
+  line-height: 2;
+  color: var(--text-secondary);
 }
 
-@media (max-width: 480px) {
-  .page {
-    padding: 24px 16px 60px;
+.paragraph:first-child {
+  color: var(--text-primary);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
+}
+
+@media (max-width: 680px) {
   .timeline {
-    padding-left: 64px;
+    padding-left: 28px;
   }
+
+  .timeline::before {
+    left: 6px;
+  }
+
+  .yearBlock {
+    position: static;
+    width: auto;
+    text-align: left;
+    margin-bottom: 12px;
+  }
+
+  .node {
+    left: -29px;
+    top: 4px;
+  }
+
   .cardInner {
     flex-direction: column;
   }
-  .imageSection {
+
+  .imageSection,
+  .imageSection.portrait {
     width: 100%;
-    border-right: none;
-    border-bottom: 1px solid rgba(120, 185, 255, 0.10);
+    padding: 10px 10px 0;
   }
-  .textSection {
-    padding: 20px 20px;
+
+  .cardImage {
+    height: 200px;
   }
+
+  .textSection,
   .textSectionFull {
-    padding: 20px 20px;
+    padding: 20px;
   }
 }

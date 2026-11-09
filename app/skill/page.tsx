@@ -77,8 +77,9 @@ export default function SkillPage() {
   return (
     <div className={styles.page}>
       <div className={styles.pageHeader}>
-        <h1 className={styles.title}>SKILL</h1>
-        <p className={styles.subtitle}>TECH STACK</p>
+        <p className={styles.eyebrow}>Tech Stack</p>
+        <h1 className={styles.title}>Skill</h1>
+        <p className={styles.subtitle}>使ってきた技術と、経験年数</p>
       </div>
 
       {/* Dev skills row */}
