@@ -215,6 +215,27 @@ GitHub Actions が自動的に:
 
 ---
 
+## Step 10 — 独自ドメインを付ける(introduction-km.com)
+
+ドメインは Cloudflare Registrar で取得し、DNS も Cloudflare で管理する(DNS は無料)。
+
+| 項目 | 値 |
+|---|---|
+| ドメイン | `introduction-km.com`(`www` も同じサイト) |
+| CloudFront | `E2MM9E07OW11N6`(`d1pc4582m36ey5.cloudfront.net`) |
+| 証明書 | ACM(us-east-1)`a9c4816a-5df2-4eee-b1dc-74c03b7dbf28`、DNS 検証、自動更新 |
+
+1. **証明書を作る:** ACM をバージニア北部(us-east-1)で開き、`introduction-km.com` と `www.introduction-km.com` の証明書を DNS 検証でリクエストする。CloudFront の証明書は us-east-1 にしか作れない。
+2. **検証用の CNAME を足す:** ACM に表示される2組の CNAME を Cloudflare の DNS に追加する。名前は末尾の `.introduction-km.com.` を除いて入れる。
+3. **CloudFront に登録する:** 代替ドメイン名に2つのドメインを追加し、カスタム SSL 証明書で上の証明書を選ぶ(`sni-only`、`TLSv1.2_2021`)。
+4. **サイト用の CNAME を足す:** Cloudflare の DNS に、`@` と `www` の CNAME を追加し、どちらも `d1pc4582m36ey5.cloudfront.net` に向ける。
+
+**Cloudflare のレコードは、すべて Proxy status を「DNS only(灰色の雲)」にする。** プロキシ(オレンジ)にすると Cloudflare と CloudFront の二重経由になり、証明書のエラーや検証の失敗が起きる。DNS の画面に出る「プロキシをすすめる」案内は無視してよい。
+
+検証用の CNAME は消さない。ACM の証明書の自動更新に使われる。
+
+---
+
 ## 動作確認
 
 1. CloudFront ドメイン（例: `https://d1abc123.cloudfront.net`）にアクセス
