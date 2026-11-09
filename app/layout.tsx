@@ -1,15 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { Space_Grotesk, Inter } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import styles from './layout.module.css'
 import './globals.css'
-
-const display = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-display',
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-})
 
 const inter = Inter({
   subsets: ['latin'],
@@ -33,7 +26,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja" className={`${display.variable} ${inter.variable}`}>
+    <html lang="ja" className={inter.variable}>
+      <head>
+        {/* 見出しの書体。ビルド時の取得が不安定なため、next/font を使わずに直接読み込む */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" />
+      </head>
       <body>
         {/* 背景のオーロラ */}
         <div className="aurora" aria-hidden="true">
