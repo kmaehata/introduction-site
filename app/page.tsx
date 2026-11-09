@@ -147,7 +147,7 @@ export default function TopPage() {
           <Link href="/portfolio/" className={styles.primaryBtn}>
             制作物を見る <span aria-hidden="true">→</span>
           </Link>
-          <Link href="/background/" className={styles.ghostBtn}>
+          <Link href="/career/" className={styles.ghostBtn}>
             経歴を見る
           </Link>
         </div>

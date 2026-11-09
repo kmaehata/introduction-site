@@ -7,8 +7,7 @@ import styles from './Navigation.module.css'
 
 const links = [
   { href: '/', label: 'Top' },
-  { href: '/education/', label: 'Education' },
-  { href: '/background/', label: 'Background' },
+  { href: '/career/', label: 'Career' },
   { href: '/skill/', label: 'Skill' },
   { href: '/portfolio/', label: 'Portfolio' },
 ]
