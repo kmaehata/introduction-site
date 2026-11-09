@@ -10,7 +10,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const p = findProject(params.slug)
-  return p ? { title: `${p.title} | KOSEI MAEHATA`, description: p.summary } : {}
+  return p ? { title: `${p.title} | KM`, description: p.summary } : {}
 }
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
