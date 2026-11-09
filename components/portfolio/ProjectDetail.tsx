@@ -54,6 +54,18 @@ export default function ProjectDetail({ project }: { project: Project }) {
             <span key={s}>{s}</span>
           ))}
         </div>
+        {project.links && (
+          <div className={styles.links}>
+            {project.links.map((l) => (
+              <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className={styles.linkBtn}>
+                <span className={styles.linkLabel}>
+                  {l.label} <span aria-hidden="true">↗</span>
+                </span>
+                {l.note && <span className={styles.linkNote}>{l.note}</span>}
+              </a>
+            ))}
+          </div>
+        )}
       </header>
 
       {/* 版の切り替え。新しい版ほど左に並ぶ */}
