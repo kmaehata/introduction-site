@@ -8,25 +8,25 @@ interface SkillGroup {
 
 const backend: SkillGroup = {
   category: 'BACKEND',
-  experience: 'Python · 6 yrs',
+  experience: 'Python · 7 yrs',
   items: [
     'Python', 'numpy', 'scipy', 'pandas', 'scikit-learn',
     'TensorFlow', 'PyTorch', 'opencv-python', 'Pillow',
     'openpyxl', 'beautifulsoup4', 'requests', 'selenium',
     'boto3', 'botocore', 'awscli', 'sqlalchemy',
-    'openai', 'langchain', 'ADK', 'Docker',
+    'SQLite', 'FastAPI', 'jsonschema', 'pytest', 'Docker',
   ],
 }
 
 const frontend: SkillGroup = {
   category: 'FRONTEND',
-  experience: 'JavaScript · 2 yrs',
-  items: ['JavaScript', 'TypeScript', 'HTML', 'CSS'],
+  experience: 'JavaScript · 3 yrs',
+  items: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'HTML', 'CSS'],
 }
 
 const awsServices: SkillGroup = {
   category: 'AWS',
-  experience: '4 yrs',
+  experience: '5 yrs',
   items: [
     'EC2', 'ECS', 'Lambda', 'Step Functions',
     'RDS', 'Aurora', 'S3', 'DynamoDB',
@@ -35,13 +35,13 @@ const awsServices: SkillGroup = {
     'CodeCommit', 'CodeBuild', 'CodeDeploy', 'CodePipeline',
     'CloudWatch', 'SQS', 'SNS', 'EventBridge',
     'SageMaker', 'Bedrock', 'Athena', 'Glue', 'Redshift',
-    'CloudFormation',
+    'CloudFormation', 'Cognito', 'ACM', 'Cost Explorer', 'Budgets',
   ],
 }
 
 const gcpServices: SkillGroup = {
   category: 'GCP',
-  experience: '2 yrs',
+  experience: '3 yrs',
   items: [
     'Cloud Run', 'Cloud Functions', 'Cloud Storage',
     'Filestore', 'Cloud SQL', 'BigQuery', 'Dataflow',
@@ -52,7 +52,7 @@ const gcpServices: SkillGroup = {
 
 const azureServices: SkillGroup = {
   category: 'AZURE',
-  experience: '2 yrs',
+  experience: '3 yrs',
   items: [
     'Azure Functions', 'Container Apps', 'App Service',
     'AKS', 'Blob Storage',
@@ -60,9 +60,17 @@ const azureServices: SkillGroup = {
   ],
 }
 
+const ai: SkillGroup = {
+  category: 'AI · AGENTS',
+  items: [
+    'マルチエージェント設計', 'Claude Code', 'Claude API', 'Amazon Bedrock',
+    'RAG', 'Tool Use', 'プロンプト設計', 'openai', 'langchain', 'ADK',
+  ],
+}
+
 const iac: SkillGroup = {
   category: 'IaC · CI/CD',
-  items: ['Terraform', 'CloudFormation', 'Cloud Build'],
+  items: ['Terraform', 'CloudFormation', 'Cloud Build', 'GitHub Actions'],
 }
 
 export default function SkillPage() {
@@ -77,6 +85,11 @@ export default function SkillPage() {
       <div className={styles.row}>
         <SkillCard group={backend} accent="backend" />
         <SkillCard group={frontend} accent="frontend" />
+      </div>
+
+      {/* AI full row */}
+      <div className={styles.rowFull}>
+        <SkillCard group={ai} accent="ai" />
       </div>
 
       {/* AWS full row */}

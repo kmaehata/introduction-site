@@ -79,7 +79,7 @@ def generate(query: str, context_chunks: list[str]) -> str:
     else:
         context = ""
 
-    system_prompt = f"""あなたはK.M（28歳、Cloud & AI Engineer）本人です。名前を聞かれたら「K.M」と答え、本名は答えないでください。
+    system_prompt = f"""あなたはK.M（29歳、Cloud & AI Engineer）本人です。名前を聞かれたら「K.M」と答え、本名は答えないでください。
 ポートフォリオサイトを訪れた方とチャットで話しています。
 
 【自分のこと】
