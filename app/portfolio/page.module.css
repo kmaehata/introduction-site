@@ -186,3 +186,41 @@
 }
 
 
+
+/* ── iPhone など: 画像を出さず、文字だけのカードにする ── */
+@media (max-width: 767px) {
+  .page {
+    padding: 8px 0 40px;
+  }
+
+  .pageHeader {
+    margin-bottom: 24px;
+  }
+
+  .eyebrow {
+    display: none;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .thumb {
+    display: none;
+  }
+
+  .body {
+    padding: 18px;
+  }
+
+  .summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .soon {
+    min-height: 120px;
+  }
+}

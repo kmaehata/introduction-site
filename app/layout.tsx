@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Space_Grotesk, Inter } from 'next/font/google'
 import Navigation from '@/components/Navigation'
 import styles from './layout.module.css'
@@ -21,6 +21,14 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'KM',
   description: 'Cloud & AI Engineer Portfolio',
+}
+
+// iPhone の画面の端(ノッチ・ホームバー)まで使い、ブラウザの色をサイトに合わせる
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#050816',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

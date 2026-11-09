@@ -485,3 +485,103 @@
     grid-row: 1 / span 2;
   }
 }
+
+/* ── iPhone など: 冗長な所を省いて、役割と案件だけにする ── */
+@media (max-width: 767px) {
+  .page {
+    padding: 8px 0 40px;
+  }
+
+  .pageHeader {
+    margin-bottom: 24px;
+  }
+
+  .eyebrow {
+    display: none;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    margin-top: 8px;
+    font-size: 0.85rem;
+  }
+
+  .toolbar {
+    margin-bottom: 16px;
+  }
+
+  .filter {
+    flex: 1;
+  }
+
+  .filter button {
+    flex: 1;
+    min-height: 40px;
+  }
+
+  .expandAll,
+  .lead,
+  .skillsBlock,
+  .techChips {
+    display: none;
+  }
+
+  .timeline {
+    gap: 8px;
+  }
+
+  .item {
+    border-radius: 18px;
+  }
+
+  .row {
+    min-height: 56px;
+    padding: 12px 14px 12px 0;
+  }
+
+  .rowTitle,
+  .company .rowTitle {
+    font-size: 0.95rem;
+  }
+
+  .body {
+    gap: 14px;
+    padding: 0 14px 16px 40px;
+  }
+
+  .paragraph {
+    font-size: 0.9rem;
+    line-height: 1.9;
+  }
+
+  .role {
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    border-radius: 10px;
+  }
+
+  .projectHead {
+    padding: 12px 14px;
+  }
+
+  .projectTitle {
+    font-size: 0.86rem;
+  }
+
+  .projectBody {
+    padding: 0 14px 14px;
+  }
+
+  .summary li {
+    font-size: 0.84rem;
+  }
+
+  .portfolioLink {
+    align-self: stretch;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+}

@@ -47,6 +47,12 @@
   --line-height-body: 1.6;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 html,
 body {
   color: var(--text-primary);
@@ -59,6 +65,7 @@ body {
 
 body {
   min-height: 100vh;
+  min-height: 100svh;
   background: var(--bg);
 }
 
@@ -159,6 +166,45 @@ button {
 input,
 textarea {
   font-family: var(--sans);
+}
+
+/* ── iPhone など(幅 767px 以下) ──
+   背景の動きを止め、ぼかしを軽くして、描画の負荷と電池の消費を抑える */
+@media (max-width: 767px) {
+  :root {
+    --glass-blur: blur(14px) saturate(130%);
+    --glass-shadow: 0 12px 32px -16px rgba(0, 0, 0, 0.55);
+  }
+
+  .aurora span {
+    animation: none;
+    filter: blur(60px);
+  }
+
+  .aurora span:nth-child(1) {
+    width: 90vw;
+    height: 90vw;
+    left: -30vw;
+    top: -30vw;
+  }
+
+  .aurora span:nth-child(2) {
+    width: 80vw;
+    height: 80vw;
+    right: -40vw;
+    top: 30vh;
+  }
+
+  .aurora span:nth-child(3) {
+    display: none;
+  }
+
+  /* 入力欄を押したときに画面が拡大されないよう、16px 以上にする */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
 }
 
 :focus-visible {

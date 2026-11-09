@@ -167,3 +167,51 @@
     padding: 22px 20px;
   }
 }
+
+/* ── iPhone など: 余白と文字を詰める ── */
+@media (max-width: 767px) {
+  .page {
+    padding: 8px 0 40px;
+  }
+
+  .pageHeader {
+    margin-bottom: 24px;
+  }
+
+  .eyebrow {
+    display: none;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .row,
+  .rowFull,
+  .rowNarrow {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .card {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .cardHeader {
+    margin-bottom: 12px;
+  }
+
+  .category {
+    font-size: 1rem;
+  }
+
+  .tags {
+    gap: 6px;
+  }
+
+  .tag {
+    padding: 4px 10px;
+    font-size: 0.74rem;
+  }
+}

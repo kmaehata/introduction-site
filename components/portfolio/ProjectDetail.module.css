@@ -444,3 +444,44 @@
     font-size: 1.8rem;
   }
 }
+
+/* ── iPhone など: 画像と細かい一覧を省く ── */
+@media (max-width: 767px) {
+  .page {
+    gap: 28px;
+  }
+
+  .summary {
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+
+  .stack {
+    display: none;
+  }
+
+  .release {
+    padding: 16px 18px;
+  }
+
+  .highlights li {
+    font-size: 0.8rem;
+  }
+
+  .docThumb {
+    display: none;
+  }
+
+  .docBody {
+    padding: 18px;
+  }
+
+  .toc li:nth-child(n + 3) {
+    display: none;
+  }
+
+  .filter button {
+    padding: 8px 12px;
+    min-height: 36px;
+  }
+}

@@ -207,7 +207,17 @@
     display: none;
   }
 
+  .wrap {
+    top: calc(10px + env(safe-area-inset-top));
+    padding: 0 max(12px, env(safe-area-inset-left));
+  }
+
   .bar {
     padding: 6px 6px 6px 8px;
+  }
+
+  .sheet {
+    max-height: calc(100svh - 90px);
+    overflow-y: auto;
   }
 }

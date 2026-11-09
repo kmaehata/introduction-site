@@ -100,11 +100,13 @@ export default function TopPage() {
     ask(input)
   }
 
+  // 上半身だけを切り出した軽い画像(WebP)を使う
   const characterSrc = {
-    stand: '/img/pause_stand.png',
-    thinking: '/img/pause_thinking.png',
-    talking: '/img/pause_talking.png',
+    stand: '/img/ai_stand.webp',
+    thinking: '/img/ai_thinking.webp',
+    talking: '/img/ai_talking.webp',
   }[character]
+  const characterLabel = { stand: 'オンライン', thinking: '考え中…', talking: '回答中' }[character]
 
   return (
     <div className={styles.page}>
@@ -123,10 +125,10 @@ export default function TopPage() {
           <p className={styles.lead}>
             AWS・GCP・Azure のマルチクラウドを基盤に、生成AI・機械学習システムの設計から実装まで一気通貫で対応できるエンジニアです。
           </p>
-          <p>
+          <p className={styles.more}>
             深層学習モデルの研究開発・LLM を活用したプロダクト構築・エンタープライズ向けクラウドインフラ設計の実績を持ちます。バックエンド開発からインフラまでフルスタックに対応し、即戦力として技術貢献が可能です。
           </p>
-          <p>
+          <p className={styles.more}>
             現在は業務委託として稼働中。スタートアップから大規模プロジェクトまで、幅広い案件に対応します。
           </p>
         </div>
@@ -163,9 +165,14 @@ export default function TopPage() {
 
         <div className={styles.chatBody}>
           <div className={styles.character}>
-            <div className={styles.halo} />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={characterSrc} alt="キャラクター" className={styles.characterImg} />
+            <div className={styles.portrait}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={characterSrc} alt="AI のキャラクター" className={styles.characterImg} width={320} height={400} />
+            </div>
+            <p className={styles.characterName}>K.M の AI</p>
+            <p className={`${styles.characterState} ${character !== 'stand' ? styles.characterBusy : ''}`}>
+              {characterLabel}
+            </p>
           </div>
 
           <div className={`${styles.conversation} ${!visible ? styles.fadeOut : ''}`}>

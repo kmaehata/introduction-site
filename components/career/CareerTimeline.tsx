@@ -151,7 +151,7 @@ function CompanyItem({ company, open, onToggle }: { company: Company; open: bool
             </div>
           </div>
 
-          <div className={styles.block}>
+          <div className={`${styles.block} ${styles.skillsBlock}`}>
             <p className={styles.label}>活かしたスキル</p>
             <div className={styles.chips}>
               {company.skills.map((s) => (
@@ -204,7 +204,7 @@ function ProjectItem({ project, open, onToggle }: { project: Project; open: bool
               <li key={s}>{s}</li>
             ))}
           </ul>
-          <div className={styles.chips}>
+          <div className={`${styles.chips} ${styles.techChips}`}>
             {project.tech.map((t) => (
               <span key={t} className={`${styles.chip} ${styles.chipSmall}`}>{t}</span>
             ))}
