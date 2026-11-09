@@ -25,16 +25,18 @@ s3 = boto3.client("s3")
 EMBEDDINGS_BUCKET = os.environ["EMBEDDINGS_BUCKET"]
 EMBEDDINGS_KEY = "knowledge_base.json"
 EMBED_MODEL = "amazon.titan-embed-text-v2:0"
-LLM_MODEL = os.environ.get("LLM_MODEL", "global.anthropic.claude-sonnet-5-5")
+# このアカウントで使える最新の Sonnet(日本国内で処理する推論プロファイル)。Sonnet 5 系はまだ使えない
+LLM_MODEL = os.environ.get("LLM_MODEL", "jp.anthropic.claude-sonnet-4-6")
 EMBED_DIMENSIONS = 256
 TOP_K = 4
 MAX_TOKENS = 220
 
 # ── 月の上限 ──────────────────────────────────────────────────────────────────
-# 料金は 100万トークンあたりの USD。モデルを変えたら環境変数で合わせる
+# 料金は 100万トークンあたりの USD。Sonnet 4.6 の単価に、日本国内で処理する分の上乗せ(1割)を見込んだ値。
+# モデルを変えたら環境変数で合わせる
 MONTHLY_BUDGET_USD = float(os.environ.get("MONTHLY_BUDGET_USD", "3"))
-PRICE_INPUT_PER_MTOK = float(os.environ.get("PRICE_INPUT_PER_MTOK", "2"))
-PRICE_OUTPUT_PER_MTOK = float(os.environ.get("PRICE_OUTPUT_PER_MTOK", "10"))
+PRICE_INPUT_PER_MTOK = float(os.environ.get("PRICE_INPUT_PER_MTOK", "3.3"))
+PRICE_OUTPUT_PER_MTOK = float(os.environ.get("PRICE_OUTPUT_PER_MTOK", "16.5"))
 PRICE_EMBED_PER_MTOK = float(os.environ.get("PRICE_EMBED_PER_MTOK", "0.02"))
 USAGE_PREFIX = "usage/"
 JST = timezone(timedelta(hours=9))
