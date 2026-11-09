@@ -39,14 +39,6 @@ const entries: TimelineEntry[] = [
     ],
   },
   {
-    year: '2018',
-    imageSrc: '/img/Mister.jpg',
-    portrait: true,
-    paragraphs: [
-      'ミスターコンテストに参加。このときの写真が残っている。「前畑康成」で検索すると、当時の活動写真を見ることができる。',
-    ],
-  },
-  {
     year: '2020',
     paragraphs: [
       '芝浦工業大学工学部情報工学科を卒業。',

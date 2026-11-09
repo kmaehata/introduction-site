@@ -108,7 +108,7 @@ export default function TopPage() {
 
             {/* ── 固定ヘッダー: フェードしない ── */}
             <div className={styles.introHeader}>
-              <p className={styles.introName}>前畑 康成</p>
+              <p className={styles.introName}>K.M</p>
               <p className={styles.introRole}>Cloud &amp; AI Engineer</p>
               <div className={styles.divider} />
             </div>

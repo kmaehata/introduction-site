@@ -18,7 +18,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'KOSEI MAEHATA',
+  title: 'KM',
   description: 'Cloud & AI Engineer Portfolio',
 }
 
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ja" className={`${playfair.variable} ${inter.variable}`}>
       <body>
         <header className={styles.header}>
-          <div className={styles.logo}>KOSEI MAEHATA</div>
+          <div className={styles.logo}>KM</div>
           <div className={styles.subtext}>CLOUD &amp; AI ENGINEER</div>
         </header>
         <Navigation />
