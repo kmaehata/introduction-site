@@ -1,5 +1,5 @@
 .page {
-  padding: 40px 48px 96px;
+  padding: 8px 0 64px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -39,10 +39,15 @@
 }
 
 .title {
-  font-size: 2.3rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  text-shadow: 0 0 32px rgba(100, 180, 255, 0.25);
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  background: linear-gradient(120deg, #ffffff 0%, #c7d2fe 60%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .summary {
@@ -117,7 +122,7 @@
   padding: 12px 16px;
   border-radius: 12px;
   border: 1px solid rgba(120, 185, 255, 0.2);
-  background: rgba(4, 12, 42, 0.6);
+  background: var(--glass);
   color: var(--text-secondary);
   text-align: left;
   transition: border-color 0.2s, background 0.2s;
@@ -168,10 +173,10 @@
 .release {
   padding: 22px 24px;
   border-radius: 16px;
-  background: rgba(4, 12, 42, 0.72);
-  border: 1px solid rgba(120, 185, 255, 0.16);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .releaseTitle {
@@ -227,8 +232,8 @@
   display: flex;
   padding: 4px;
   border-radius: 999px;
-  background: rgba(4, 12, 42, 0.7);
-  border: 1px solid rgba(120, 185, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
 }
 
 .filter button {
@@ -241,7 +246,7 @@
 }
 
 .filter .filterActive {
-  background: rgba(160, 215, 255, 0.92);
+  background: rgba(199, 210, 254, 0.95);
   color: #04102e;
 }
 
@@ -254,12 +259,12 @@
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: 0;
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  background: rgba(4, 12, 42, 0.76);
-  border: 1px solid rgba(120, 185, 255, 0.18);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
 }
 
 .docThumb {
@@ -403,7 +408,7 @@
 
 .primary {
   border: none;
-  background: rgba(160, 215, 255, 0.92);
+  background: rgba(199, 210, 254, 0.95);
   color: #04102e;
 }
 
@@ -432,11 +437,51 @@
 
 @media (max-width: 767px) {
   .page {
-    padding: 28px 16px 72px;
     gap: 32px;
   }
 
   .title {
     font-size: 1.8rem;
+  }
+}
+
+/* ── iPhone など: 画像と細かい一覧を省く ── */
+@media (max-width: 767px) {
+  .page {
+    gap: 28px;
+  }
+
+  .summary {
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+
+  .stack {
+    display: none;
+  }
+
+  .release {
+    padding: 16px 18px;
+  }
+
+  .highlights li {
+    font-size: 0.8rem;
+  }
+
+  .docThumb {
+    display: none;
+  }
+
+  .docBody {
+    padding: 18px;
+  }
+
+  .toc li:nth-child(n + 3) {
+    display: none;
+  }
+
+  .filter button {
+    padding: 8px 12px;
+    min-height: 36px;
   }
 }

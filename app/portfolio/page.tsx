@@ -6,8 +6,9 @@ export default function PortfolioPage() {
   return (
     <div className={styles.page}>
       <div className={styles.pageHeader}>
-        <h1 className={styles.title}>PORTFOLIO</h1>
-        <p className={styles.subtitle}>WORKS</p>
+        <p className={styles.eyebrow}>Works</p>
+        <h1 className={styles.title}>Portfolio</h1>
+        <p className={styles.subtitle}>作ったもの、育てているもの</p>
       </div>
 
       <div className={styles.grid}>

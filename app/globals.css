@@ -4,43 +4,153 @@
   padding: 0;
 }
 
+/* ── デザインの共通設定 ──
+   背景は深い紺、カードは白をごく薄く重ねた「すりガラス」で統一する */
 :root {
-  --bg: #040e2a;
-  --glass: rgba(4, 12, 42, 0.74);
-  --glass-strong: rgba(4, 12, 42, 0.88);
-  --glass-border: rgba(120, 185, 255, 0.20);
-  --glass-border-light: rgba(120, 185, 255, 0.10);
-  --text-primary: rgba(255, 255, 255, 0.96);
-  --text-secondary: rgba(200, 225, 255, 0.70);
-  --text-muted: rgba(160, 200, 255, 0.45);
-  --timeline-line: rgba(140, 200, 255, 0.35);
-  --node-ring: rgba(160, 215, 255, 0.72);
-  --serif: var(--font-serif, 'Georgia', serif);
-  --sans: var(--font-sans, -apple-system, 'Helvetica Neue', sans-serif);
-  --text-label: rgba(180, 218, 255, 0.75);
-  --text-query: rgba(210, 232, 255, 0.82);
+  --bg: #050816;
+  --bg-deep: #03050d;
+
+  /* すりガラス */
+  --glass: rgba(255, 255, 255, 0.045);
+  --glass-strong: rgba(255, 255, 255, 0.07);
+  --glass-hover: rgba(255, 255, 255, 0.075);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-border-light: rgba(255, 255, 255, 0.06);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(22px) saturate(140%);
+  --glass-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.55);
+
+  /* 文字 */
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-secondary: rgba(226, 232, 255, 0.72);
+  --text-muted: rgba(200, 210, 240, 0.45);
+  --text-label: rgba(170, 190, 255, 0.78);
+  --text-query: rgba(235, 240, 255, 0.88);
+
+  /* 差し色 */
+  --accent: #7c9cff;
+  --accent-2: #a78bfa;
+  --accent-3: #5eead4;
+  --accent-gradient: linear-gradient(120deg, #9db4ff 0%, #c4b5fd 45%, #7dd3fc 100%);
+
+  --timeline-line: rgba(160, 180, 255, 0.30);
+  --node-ring: rgba(180, 200, 255, 0.80);
+
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+
+  --serif: var(--font-display, 'Space Grotesk', 'Inter', sans-serif);
+  --display: var(--font-display, 'Space Grotesk', 'Inter', sans-serif);
+  --sans: var(--font-sans, 'Inter'), 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic UI', 'Meiryo', sans-serif;
   --font-size-label: 0.75rem;
   --line-height-body: 1.6;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 html,
 body {
-  height: 100%;
   color: var(--text-primary);
   font-family: var(--sans);
-  font-weight: 300;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 body {
-  background-color: #0a1e5e;
-  background-image: url('/img/background.png');
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: var(--bg);
+}
+
+/* オーロラの背景(画面に固定して、ゆっくり動かす) */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 800px at 50% -10%, rgba(76, 99, 210, 0.22), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+}
+
+.aurora span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.aurora span:nth-child(1) {
+  width: 46vw;
+  height: 46vw;
+  left: -10vw;
+  top: -12vw;
+  background: radial-gradient(circle, #3b5bdb 0%, transparent 65%);
+  animation: drift1 26s ease-in-out infinite alternate;
+}
+
+.aurora span:nth-child(2) {
+  width: 40vw;
+  height: 40vw;
+  right: -8vw;
+  top: 10vh;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 65%);
+  opacity: 0.45;
+  animation: drift2 32s ease-in-out infinite alternate;
+}
+
+.aurora span:nth-child(3) {
+  width: 38vw;
+  height: 38vw;
+  left: 25vw;
+  bottom: -18vw;
+  background: radial-gradient(circle, #0ea5b7 0%, transparent 65%);
+  opacity: 0.35;
+  animation: drift3 38s ease-in-out infinite alternate;
+}
+
+/* うっすらとした方眼(上の方だけ見える) */
+.aurora::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+}
+
+@keyframes drift1 {
+  to { transform: translate(12vw, 10vh) scale(1.1); }
+}
+
+@keyframes drift2 {
+  to { transform: translate(-14vw, 16vh) scale(0.9); }
+}
+
+@keyframes drift3 {
+  to { transform: translate(10vw, -14vh) scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora span {
+    animation: none;
+  }
+}
+
+::selection {
+  background: rgba(124, 156, 255, 0.35);
 }
 
 a {
@@ -56,4 +166,48 @@ button {
 input,
 textarea {
   font-family: var(--sans);
+}
+
+/* ── iPhone など(幅 767px 以下) ──
+   背景の動きを止め、ぼかしを軽くして、描画の負荷と電池の消費を抑える */
+@media (max-width: 767px) {
+  :root {
+    --glass-blur: blur(14px) saturate(130%);
+    --glass-shadow: 0 12px 32px -16px rgba(0, 0, 0, 0.55);
+  }
+
+  .aurora span {
+    animation: none;
+    filter: blur(60px);
+  }
+
+  .aurora span:nth-child(1) {
+    width: 90vw;
+    height: 90vw;
+    left: -30vw;
+    top: -30vw;
+  }
+
+  .aurora span:nth-child(2) {
+    width: 80vw;
+    height: 80vw;
+    right: -40vw;
+    top: 30vh;
+  }
+
+  .aurora span:nth-child(3) {
+    display: none;
+  }
+
+  /* 入力欄を押したときに画面が拡大されないよう、16px 以上にする */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid rgba(157, 180, 255, 0.8);
+  outline-offset: 2px;
 }

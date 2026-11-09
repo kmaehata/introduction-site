@@ -1,144 +1,223 @@
-.nav {
+.wrap {
   position: fixed;
+  top: 16px;
+  left: 0;
   right: 0;
-  top: 0;
-  bottom: 0;
-  width: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 0 32px;
-  gap: 28px;
   z-index: 100;
-  /* ガラス背景 */
-  background: rgba(4, 14, 50, 0.55);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-left: 1px solid rgba(120, 185, 255, 0.14);
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.bar {
+  pointer-events: auto;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 10px 8px 18px;
+  border-radius: 999px;
+  background: rgba(14, 18, 40, 0.45);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-highlight), 0 10px 40px -12px rgba(0, 0, 0, 0.6);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: background 0.3s;
+}
+
+.scrolled {
+  background: rgba(10, 13, 30, 0.72);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.logoMark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: #0b1024;
+  background: var(--accent-gradient);
+  box-shadow: 0 0 20px rgba(140, 160, 255, 0.45);
+}
+
+.logoText {
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.links {
+  display: flex;
+  gap: 4px;
+  margin: 0 auto;
 }
 
 .link {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  opacity: 0.38;
-  transition: opacity 0.3s ease;
-  text-align: right;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  transition: color 0.2s, background 0.2s;
 }
 
 .link:hover {
-  opacity: 0.75;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .link.active {
-  opacity: 1;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow: var(--glass-highlight);
 }
 
-.label {
-  font-size: 1rem;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.96);
-  text-transform: uppercase;
-  text-shadow: 0 0 12px rgba(100, 180, 255, 0.40);
+.status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border-light);
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.sub {
-  font-size: 0.70rem;
-  letter-spacing: 0.10em;
-  color: rgba(160, 210, 255, 0.75);
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5eead4;
+  box-shadow: 0 0 10px #5eead4;
+  animation: pulse 2.4s ease-in-out infinite;
 }
 
-/* ── ハンバーガーボタン（デフォルト: デスクトップで非表示） ── */
-.hamburger {
+@keyframes pulse {
+  50% { opacity: 0.45; }
+}
+
+/* スマホ用のメニューボタン */
+.menuBtn {
   display: none;
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 101;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
-  background: rgba(4, 12, 42, 0.72);
-  border: 1px solid rgba(120, 185, 255, 0.22);
-  border-radius: 8px;
-  padding: 10px 11px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.line {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.88);
+.menuBtn span {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  height: 1.5px;
   border-radius: 1px;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  background: var(--text-primary);
+  transition: transform 0.25s;
 }
 
-/* ── 背景オーバーレイ ── */
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 99;
-  background: rgba(4, 12, 42, 0.55);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+.menuBtn span:nth-child(1) {
+  top: 16px;
 }
 
-/* ── モバイル (max-width: 767px) ── */
+.menuBtn span:nth-child(2) {
+  top: 22px;
+}
+
+.menuOpen span:nth-child(1) {
+  transform: translateY(3px) rotate(45deg);
+}
+
+.menuOpen span:nth-child(2) {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+.sheet {
+  pointer-events: auto;
+  max-width: 1120px;
+  margin: 10px auto 0;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  background: rgba(10, 13, 30, 0.82);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-highlight), var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  animation: sheetIn 0.2s ease-out;
+}
+
+.sheetLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-family: var(--display);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+}
+
+.sheetLink.active,
+.sheetLink:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+@keyframes sheetIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (max-width: 900px) {
+  .status {
+    display: none;
+  }
+}
+
 @media (max-width: 767px) {
-  .nav {
-    transform: translateX(100%);
-    transition: transform 0.25s ease;
+  .links {
+    display: none;
   }
 
-  .navOpen {
-    transform: translateX(0);
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .overlay {
+  .menuBtn {
     display: block;
   }
-}
 
-/* ── デスクトップ明示（min-width: 768px） ── */
-@media (min-width: 768px) {
-  .hamburger {
-    display: none !important;
+  .logoText {
+    display: none;
   }
 
-  .overlay {
-    display: none !important;
+  .wrap {
+    top: calc(10px + env(safe-area-inset-top));
+    padding: 0 max(12px, env(safe-area-inset-left));
   }
 
-  .nav {
-    transform: none !important;
-  }
-}
-
-/* ── モバイル: リンク可読性改善 ── */
-@media (max-width: 767px) {
-  .nav {
-    gap: 4px;
-    padding: 80px 28px 40px;
+  .bar {
+    padding: 6px 6px 6px 8px;
   }
 
-  .link {
-    min-height: 44px;
-    padding: 12px 0;
-    gap: 6px;
-    opacity: 0.85;
-  }
-
-  .sub {
-    font-size: var(--font-size-label);
-    letter-spacing: 0.12em;
+  .sheet {
+    max-height: calc(100svh - 90px);
+    overflow-y: auto;
   }
 }
