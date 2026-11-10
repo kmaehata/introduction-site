@@ -60,9 +60,9 @@ export const projects: Project[] = [
     repoNote: 'ソースコードは非公開です。設計の考え方や実装は、面談で画面を共有しながらご説明できます。',
     links: [
       {
-        label: 'Webアプリを開く',
-        href: 'https://d16oi8osid5n77.cloudfront.net/',
-        note: '成績や AI の判断を見る画面です(ログインが必要です)',
+        label: 'Webアプリのデモを見る',
+        href: 'https://d16oi8osid5n77.cloudfront.net/?demo',
+        note: 'ログイン不要 ・ 成績・AI の判断・日記を、実際のデータで見られます',
       },
     ],
     versions: [
