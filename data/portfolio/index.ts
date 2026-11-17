@@ -2,6 +2,7 @@
 // 新しい版を出すときは、資料を public/portfolio/<slug>/v<版>/ に置き、
 // versions の先頭に1件足す(新しい版が先頭)。画面はこのファイルだけを見て作られる。
 import tradeDeskV1 from './ai-trade-desk-v1.0.json'
+import tradeDeskV11 from './ai-trade-desk-v1.1.json'
 
 export type Audience = 'engineer' | 'business'
 
@@ -46,6 +47,7 @@ function slidesOf(manifest: Manifest, base: string, deck: string): Slide[] {
 }
 
 const v1Base = '/portfolio/ai-trade-desk/v1.0'
+const v11Base = '/portfolio/ai-trade-desk/v1.1'
 
 export const projects: Project[] = [
   {
@@ -61,11 +63,34 @@ export const projects: Project[] = [
     links: [
       {
         label: 'Webアプリのデモを見る',
-        href: 'https://d16oi8osid5n77.cloudfront.net/?demo',
-        note: 'ログイン不要 ・ 成績・AI の判断・日記を、実際のデータで見られます',
+        href: 'https://d16oi8osid5n77.cloudfront.net/',
+        note: 'ログイン不要 ・ 本番と同じ画面を、架空のデータで見られます',
       },
     ],
     versions: [
+      {
+        version: '1.1',
+        date: '2026.11',
+        title: '負け方を調べて、ルールを作り直した',
+        highlights: [
+          'デイ攻め: 15分足の突破をやめ、4時間足の流れの方向に1時間足の押し・戻りで入る形に',
+          'デイ守り: 下げの相場でも、急落の行き過ぎからの戻りを小さく・こまめに取る',
+          'ミドル: 自動売買をやめ、AIの「買い時か」の見立てを Slack で知らせる係に',
+          '比べる相手に「下げで売るだけ」を追加し、デイの財布は100万円から再スタート',
+          'Webアプリ: ログインなしでデモを見られるように',
+        ],
+        docs: [
+          {
+            id: 'changes',
+            no: '04',
+            title: 'v1.1 の変更点',
+            catch: '負け方を調べて、ルールを作り直した',
+            audience: ['engineer', 'business'],
+            pdf: `${v11Base}/changes.pdf`,
+            slides: slidesOf(tradeDeskV11, v11Base, 'changes'),
+          },
+        ],
+      },
       {
         version: '1.0',
         date: '2026.11',
