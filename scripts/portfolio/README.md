@@ -35,3 +35,16 @@ node scripts/portfolio/export-slides.js <スライドのフォルダ> <出力先
 
 古い版も残るので、画面の「VERSIONS」から切り替えて読めます。
 `/portfolio/<slug>/#v1.0` のように、版を指定したリンクも作れます。
+
+## Python で書き出す(v1.1 から)
+
+Windows の Node.js から Playwright を動かせない環境(WSL など)では、`export_slides.py` を使います。
+`export-slides.js` から CSS・フォント・アイコンを読み込むので、見た目は同じです。
+
+```bash
+python scripts/portfolio/ai-trade-desk-v1.1/make_slides.py <スライドのフォルダ> scripts/portfolio/ai-trade-desk-v1.1
+python scripts/portfolio/export_slides.py scripts/portfolio/export-slides.js <スライドのフォルダ> <出力先> changes
+```
+
+- `make_slides.py` が作る `order.txt` の順で1冊にします(冊子名は最後の引数)。
+- v1.1 の資料の元は `ai-trade-desk-v1.1/make_slides.py`(図はすべて SVG)。
