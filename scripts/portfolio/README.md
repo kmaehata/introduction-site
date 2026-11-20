@@ -48,3 +48,19 @@ python scripts/portfolio/export_slides.py scripts/portfolio/export-slides.js <�
 
 - `make_slides.py` が作る `order.txt` の順で1冊にします(冊子名は最後の引数)。
 - v1.1 の資料の元は `ai-trade-desk-v1.1/make_slides.py`(図はすべて SVG)。
+
+## WSL から Windows の Chrome で書き出す(NAKAMA v1.0 から)
+
+WSL に Chromium を入れられない環境では、Windows の Node.js と Chrome を使います。
+`playwright-core` を入れたフォルダで実行し、パスは Windows の形式(`wslpath -w`)で渡します。
+
+```bash
+python3 scripts/portfolio/nakama-v1.0/make_slides.py <スライドのフォルダ> <スクリーンショットのフォルダ>
+```
+
+```bash
+node.exe export-decks-win.cjs <export-slides.js> <スライドのフォルダ> <出力先>
+```
+
+- 冊子の組み合わせは、`make_slides.py` が作る `decks.json` で決まります。
+- 出力先の `manifest.json` は `data/portfolio/<slug>-v<版>.json` に移します。
