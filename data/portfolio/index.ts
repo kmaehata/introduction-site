@@ -3,6 +3,7 @@
 // versions の先頭に1件足す(新しい版が先頭)。画面はこのファイルだけを見て作られる。
 import tradeDeskV1 from './ai-trade-desk-v1.0.json'
 import tradeDeskV11 from './ai-trade-desk-v1.1.json'
+import nakamaV1 from './nakama-v1.0.json'
 
 export type Audience = 'engineer' | 'business'
 
@@ -48,8 +49,60 @@ function slidesOf(manifest: Manifest, base: string, deck: string): Slide[] {
 
 const v1Base = '/portfolio/ai-trade-desk/v1.0'
 const v11Base = '/portfolio/ai-trade-desk/v1.1'
+const nakamaBase = '/portfolio/nakama/v1.0'
 
 export const projects: Project[] = [
+  {
+    slug: 'nakama',
+    title: 'NAKAMA',
+    subtitle: '悪口を言い合える、日常会話AIエージェント',
+    summary:
+      '声で話しかけると、3Dのキャラが約1秒で言い返してくる日常会話AIです。超辛口ドSのレンと、ゆるふわのミル。仲良くなるほど遠慮のないいじりに変わり、名前や好きなものを覚えて次の会話に使います。使わない日は0円、月5ドルを超える前に自動で止まります。',
+    status: '公開中',
+    tags: ['音声AI', 'AIエージェント', '3D', 'GCP'],
+    stack: ['Gemini 3.8 Live', 'Vertex AI', 'Cloud Run', 'Firestore', 'Cloud Functions', 'Pub/Sub', 'Python', 'FastAPI', 'React', 'TypeScript', 'React Three Fiber', 'three-vrm', 'Web Audio'],
+    repoNote: 'ソースコードは非公開です。設計の考え方や実装は、面談で画面を共有しながらご説明できます。',
+    links: [
+      {
+        label: 'アプリで話してみる',
+        href: 'https://nakama-ag-877445725924.us-central1.run.app/',
+        note: 'マイクを使います ・ 1回3分・1日5分まで ・ 3Dモデルは準備中(いまは光る球で表示)',
+      },
+    ],
+    versions: [
+      {
+        version: '1.0',
+        date: '2026.11',
+        title: '声で掛け合える、2人のキャラを公開',
+        highlights: [
+          '音声のまま理解して声で返す Gemini 3.8 Live で、返事まで約0.7〜1.2秒',
+          '話の途中で割り込むと、すぐ黙って聞き直す',
+          '辛口レベルと親密度で口調が変わり、名前や好きなものを覚える。越えない線は最優先で固定',
+          'Cloud Run は呼ばれた時だけ動き、使わない日は0円。1日1ドル・月5ドルで自動停止',
+        ],
+        docs: [
+          {
+            id: 'architecture',
+            no: '01',
+            title: 'アーキテクチャ',
+            catch: '声で話すAIを、使わない日は0円で動かす',
+            audience: ['engineer'],
+            pdf: `${nakamaBase}/architecture.pdf`,
+            slides: slidesOf(nakamaV1, nakamaBase, 'architecture'),
+          },
+          {
+            id: 'flow',
+            no: '02',
+            title: '処理の流れ',
+            catch: '話しかけてから、返事が聞こえるまで',
+            audience: ['engineer', 'business'],
+            pdf: `${nakamaBase}/flow.pdf`,
+            slides: slidesOf(nakamaV1, nakamaBase, 'flow'),
+          },
+        ],
+      },
+    ],
+  },
   {
     slug: 'ai-trade-desk',
     title: 'AIトレードデスク',
